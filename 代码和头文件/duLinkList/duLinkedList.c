@@ -25,18 +25,29 @@ Status InitList_DuL(DuLinkedList *L)
 Status CreatList_DuL(DuLinkedList *L)
 {
 	Status ret;
-	ElemType input;
+	ElemType input;		/* Check if the input is legal */
 	int num;		/* the number of the node you want to creat */
 	DuLNode *p,*q;	/* p is the new node, q points to the last of the existing nodes */
 	q = *L;
 	int i;		/* Count the number of nodes created now */
 	if(*L) {
-		printf("请输入你要构建的节点数："),
-		       scanf("%d",&num);
+		printf("请输入你要构建的节点数：");
+		input = scanf("%d",&num);
+		if(!input) {
+			printf("你的输入有误！请检查你的输入。\n");
+			fflush(stdin);
+		}
 		for(i=0; i<num; i++) {
 			p = (DuLNode*)malloc(sizeof(DuLNode));
 			printf("请输入第%d个节点的数据：",i+1);
-			scanf("%d",&p->data);
+			input = scanf("%d",&p->data);
+			if(!input) {
+				printf("你的输入有误！请检查你的输入。\n");
+				fflush(stdin);
+				free(p);
+				i--;
+				continue;
+			}
 			p->next = NULL;
 			p->prior = q;
 			q->next = p;

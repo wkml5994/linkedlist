@@ -24,18 +24,29 @@ Status InitList(LinkedList *L)
 Status CreatList(LinkedList *L)
 {
 	Status ret;
-	ElemType input;
+	int input;		/* Check if the input is legal */
 	int num;		/* the number of the node you want to creat */
 	LNode *p,*q;	/* p is the new node, q points to the last of the existing nodes */
 	q = *L;
 	int i;		/* Count the number of nodes created now */
 	if(*L) {
-		printf("请输入你要构建的节点数："),
-		       scanf("%d",&num);
+		printf("请输入你要构建的节点数：");
+		input = scanf("%d",&num);
+		if(!input) {
+			printf("你的输入有误！请检查你的输入。\n");
+			fflush(stdin);
+		}
 		for(i = 0; i<num; i++) {
 			p = (LNode*)malloc(sizeof(LNode));
 			printf("请输入第%d个节点的数据：",i+1);
-			scanf("%d",&p->data);
+			input = scanf("%d",&p->data);
+			if(!input) {
+				printf("你的输入有误！请检查你的输入。\n");
+				fflush(stdin);
+				free(p);
+				i--;
+				continue;
+			}
 			p->next = NULL;
 			q->next = p;
 			q = p;
@@ -92,14 +103,14 @@ Status InsertList(LNode *p, LNode *q)
  */
 Status DeleteList(LNode *p, ElemType *e)
 {
-	Status ret;
-	LNode *q;
-	q = p->next;
+	Status ret;		/* result */ 
+	LNode *q;		/* q point to the node which will be delete */
+	q = p->next;	
 	if(!q) {
 		ret = ERROR;
 	} else {
-		p->next = q->next;
-		*e = q->data;
+		p->next = q->next;	/* p point to the node next one to be deleted */
+		*e = q->data;		/* record the data */
 		free(q);
 		ret = SUCCESS;
 	}
@@ -206,7 +217,7 @@ Status IsLoopList(LinkedList L)
 			fast = fast->next;
 		}
 		slow = slow->next;
-		if(slow == fast ) {
+		if(slow == fast ) {		/* If fast encounters a slow, it means the chain is looped */ 
 			ret = SUCCESS;
 			break;
 		}
@@ -337,7 +348,7 @@ void menu()
 	printf("                            ***********************************************\n");
 	printf("			    *              0.删除链表并退出系统           *\n");
 	printf("			    ***********************************************\n");
-	printf("			    *                 -1.构造循环链表             *\n");
+	printf("			    *                 10.构造循环链表             *\n");
 	printf("			    ***********************************************\n");
 	printf("			------------------------------------------------------\n");
 	printf("			请选择菜单编号:");
