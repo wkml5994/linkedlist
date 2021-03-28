@@ -272,8 +272,8 @@ LNode* ReverseEvenList(LinkedList *L)
 	while(t->next&&t->next->next) {		/* if there is no two node to reserved,break */
 		q = t->next;		/* p,q point to the node will be reserved */
 		p = q->next;
-		t->next = p;
-		q->next = p->next;
+		t->next = p;		/* t->next points to the second one after */
+		q->next = p->next;	/* Change the order of pq */
 		p->next = q;
 		t=q;
 	}
