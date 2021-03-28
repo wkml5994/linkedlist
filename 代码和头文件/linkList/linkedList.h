@@ -11,10 +11,12 @@
  *
  ***************************************************************************************/
 
- /**************************************************************
+/**************************************************************
 *	Multi-Include-Prevent Section
 **************************************************************/
 #ifndef LINKEDLIST_H_INCLUDED
+#include <stdio.h>
+#include <stdlib.h>
 #define LINKEDLIST_H_INCLUDED
 
 /**************************************************************
@@ -33,13 +35,13 @@ typedef int ElemType;
 // define struct of linked list
 typedef struct LNode {
 	ElemType data;
-  	struct LNode *next;
+	struct LNode *next;
 } LNode, *LinkedList;
 
 // define Status
 typedef enum Status {
-	ERROR,
-	SUCCESS
+    ERROR,
+    SUCCESS
 } Status;
 
 
@@ -137,7 +139,43 @@ LNode* ReverseEvenList(LinkedList *L);
  */
 LNode* FindMidNode(LinkedList *L);
 
- /**************************************************************
+/**
+ *  @name        : void visit(ElemType e)
+ *	@description : output the value of the node
+ *	@param		 : e(the data of node)
+ *	@return		 : None
+ *  @notice      : None
+ */
+void visit(ElemType e);
+
+/**
+ *  @name        : Status CreatList(LinkedList *L)
+ *	@description : Create a linkedlist by tail insertion
+ *	@param		 : L(the head node)
+ *	@return		 : Status
+ *  @notice      : None
+ */
+Status CreatList(LinkedList *L);
+
+/**
+ *  @name        : LNode* FindNode(ElemType e,LinkedList L)
+ *	@description : find the node in the linked list
+ *	@param		 : e(the data which will be finded),L(the head node)
+ *	@return		 : LNode
+ *  @notice      : none
+ */
+LNode* FindNode(ElemType e,LinkedList L);
+
+/**
+ *  @name        : oid menu()
+ *	@description : creat a menu
+ *	@param		 : none
+ *	@return		 : none
+ *  @notice      : none
+ */
+void menu();
+
+/**************************************************************
 *	End-Multi-Include-Prevent Section
 **************************************************************/
 #endif

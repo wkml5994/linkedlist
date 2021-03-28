@@ -1,6 +1,6 @@
 [Project]
-FileName=dullinkedlist.dev
-Name=dullinkedlist
+FileName=linkedlist.dev
+Name=linkedlist
 Type=1
 Ver=2
 ObjFiles=
@@ -51,7 +51,7 @@ AutoIncBuildNr=0
 SyncProduct=1
 
 [Unit1]
-FileName=main.c
+FileName=linkedList.c
 CompileCpp=0
 Folder=
 Compile=1
@@ -61,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=duLinkedList.c
+FileName=linkedList.h
 CompileCpp=0
 Folder=
 Compile=1
@@ -71,7 +71,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit3]
-FileName=duLinkedList.h
+FileName=main.c
 CompileCpp=0
 Folder=
 Compile=1

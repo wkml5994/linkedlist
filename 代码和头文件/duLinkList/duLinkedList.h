@@ -23,6 +23,8 @@
 **************************************************************/
 
 #define OVERFLOW -1
+#include <stdio.h>
+#include <stdlib.h>
 
 /**************************************************************
 *	Struct Define Section
@@ -102,6 +104,41 @@ Status DeleteList_DuL(DuLNode *p, ElemType *e);
  */
 void TraverseList_DuL(DuLinkedList L, void (*visit)(ElemType e));
 
+/**
+ *  @name        : oid menu()
+ *	@description : creat a menu
+ *	@param		 : none
+ *	@return		 : none
+ *  @notice      : none
+ */
+void menu();
+
+/**
+ *  @name        : FindNode_DuL(ElemType e,LinkedList L)
+ *	@description : find the node in the linked list
+ *	@param		 : e(the data which will be finded),L(the head node)
+ *	@return		 : LNode
+ *  @notice      : none
+ */
+DuLNode* FindNode_DuL(ElemType e,DuLinkedList L);
+
+/**
+ *  @name        : Status CreatList_DuL(LinkedList *L)
+ *	@description : Create a linkedlist by tail insertion
+ *	@param		 : L(the head node)
+ *	@return		 : Status
+ *  @notice      : None
+ */
+Status CreatList_DuL(DuLinkedList *L);
+
+/**
+ *  @name        : void visit(ElemType e)
+ *	@description : output the value of the node
+ *	@param		 : e(the data of node)
+ *	@return		 : None
+ *  @notice      : None
+ */
+void visit(ElemType e);
 
  /**************************************************************
 *	End-Multi-Include-Prevent Section

@@ -1,4 +1,4 @@
-#include "duLinkedListcopy.h"
+#include "duLinkedList.h"
 int main()
 {
 	DuLinkedList head=NULL;
